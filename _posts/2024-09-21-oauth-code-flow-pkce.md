@@ -42,7 +42,7 @@ username = "<USERNAME>"
 password = "<PASSWORD>"
 redirect_uri = "http://localhost/foobar"
 ```
-Defining key variables, including the authorization server URL, client ID, user credentials, and the redirect URI used in the OAuth flow.  Remember to replace the placeholders (<YOUR_URL>, <YOUR_REALM>, <CLIENT_ID>, <USERNAME>, <PASSWORD>) with your actual values when implementing this script.
+Defining key variables, including the authorization server URL, client ID, user credentials, and the redirect URI used in the OAuth flow.  Remember to replace the placeholders (YOUR_URL, YOUR_REALM, CLIENT_ID, USERNAME, PASSWORD) with your actual values when implementing this script.
 
 ```python
 code_verifier = base64.urlsafe_b64encode(os.urandom(40)).decode('utf-8')
