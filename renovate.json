@@ -1,6 +1,5 @@
 {
   "extends": ["config:base"],
-  "repositories": ["cyborghound/cyborghound.github.io"],
   "packageRules": [
     {
       "matchDatasources": ["github-releases"],
