@@ -1,9 +1,17 @@
 {
-  "extends": ["config:base"],
+  "extends": [
+    "config:recommended"
+  ],
   "packageRules": [
     {
-      "matchPackageNames": ["jekyll-theme-chirpy"],
-      "matchUpdateTypes": ["minor", "patch", "major"],
+      "matchPackageNames": [
+        "jekyll-theme-chirpy"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "major"
+      ],
       "groupName": "Chirpy Theme Updates",
       "automerge": false
     }
