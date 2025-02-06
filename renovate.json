@@ -2,10 +2,10 @@
   "extends": ["config:base"],
   "packageRules": [
     {
-      "matchPackageNames": ["jekyll-theme-chirpy"],  // Match the GEM NAME!
-      "matchUpdateTypes": ["minor", "patch", "major"], // Or "release-notes"
+      "matchPackageNames": ["jekyll-theme-chirpy"],
+      "matchUpdateTypes": ["minor", "patch", "major"],
       "groupName": "Chirpy Theme Updates",
-      "automerge": false // Review updates carefully
+      "automerge": false
     }
   ]
 }
