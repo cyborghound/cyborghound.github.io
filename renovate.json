@@ -2,9 +2,10 @@
   "extends": ["config:base"],
   "packageRules": [
     {
-      "matchDatasources": ["github-releases"],
-      "matchPackagePatterns": [".*"],
-      "matchSourceUrls": ["https://github.com/cotes2020/chirpy-starter"]
+      "matchPackageNames": ["jekyll-theme-chirpy"],  // Match the GEM NAME!
+      "matchUpdateTypes": ["minor", "patch", "major"], // Or "release-notes"
+      "groupName": "Chirpy Theme Updates",
+      "automerge": false // Review updates carefully
     }
   ]
 }
