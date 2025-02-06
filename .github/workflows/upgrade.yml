@@ -1,0 +1,35 @@
+name: Chirpy Theme Upgrade
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Run daily (adjust as needed)
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: 'cotes2020/jekyll-theme-chirpy' # Upstream repo
+          path: 'upstream'
+      - uses: actions/checkout@v3
+        with:
+          path: 'local'
+      - name: Diff and Create PR
+        run: |
+          # Use `rsync` or `meld` or a custom script to carefully merge
+          # changes from 'upstream' to 'local', avoiding conflicts.
+          # Example using rsync (be very careful with the excludes)
+          rsync -avz --exclude={'Gemfile','Gemfile.lock','_config.yml', ...} upstream/ local/
+
+          # Check if there are any changes
+          if [[ $(git status --porcelain | wc -l) -gt 0 ]]; then
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git add .
+            git commit -m "Chirpy Theme Update"
+            git push origin main # Or a dedicated branch
+            # Create a pull request (using GitHub CLI or the GitHub API)
+            gh pr create --base main --head <your-username>:<branch-name> --title "Chirpy Theme Update" --body "Automated Chirpy theme update."
+          fi
