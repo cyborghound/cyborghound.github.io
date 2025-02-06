@@ -9,11 +9,11 @@ jobs:
   upgrade:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           repository: 'cotes2020/jekyll-theme-chirpy' # Upstream repo
           path: 'upstream'
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: 'local'
       - name: Diff and Create PR
