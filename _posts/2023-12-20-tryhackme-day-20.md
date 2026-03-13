@@ -1,5 +1,7 @@
 ---
 layout: post
+toc: true
+comments: true
 title: "TryHackMe: Advent Of Cyber 2023 - Day 20"
 date: 2023-12-20 20:08 +0200
 categories: TryHackMe AdventOfCyber2023
@@ -17,22 +19,29 @@ A GitLab instance for AntarctiCrafts' CI/CD automates everything from sending si
 # Questions
 
 > What is the handle of the developer responsible for the merge changes?
+>
 >- BadSecOps
 
 > What port is the defaced calendar site server running on?
+>
 >- 9081
 
 > What server is the malicious server running on?
+>
 >- Apache
 
 > What message did the Frostlings leave on the defaced site?
+>
 >- Frostlings Rule
 
 > What is the commit ID of the original code for the Advent Calendar site?
+>
 >- 986b7407
 
 > If you enjoyed today's challenge, please check out the Source Code Security room.
+>
 >- No answer needed
 
 > Detective Frosteau believes it was an account takeover based on the activity. However, Tracy might have left some crumbs.
+>
 >- No answer needed

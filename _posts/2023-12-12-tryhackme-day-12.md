@@ -1,5 +1,7 @@
 ---
 layout: post
+toc: true
+comments: true
 title: "TryHackMe: Advent Of Cyber 2023 - Day 12"
 date: 2023-12-12 09:42 +0200
 categories: TryHackMe AdventOfCyber2023
@@ -19,22 +21,29 @@ In this task, we will be hopping into McHoneyBell's shoes and exploring how the 
 # Questions
 
 > What is the default port for Jenkins?
+>
 >- 8080
 
 > What is the password of the user tracy?
+>
 >- 13_1n_33
 
 > What's the root flag?
+>
 >- ezRo0tW1thoutDiD
 
 > What is the error message when you login as tracy again and try sudo -l after its removal from the sudoers group?
+>
 >- Sorry, user tracy may not run sudo on jenkins.
 
 > What's the SSH flag?
+>
 >- Ne3d2SecureTh1sSecureSh31l
 
 > What's the Jenkins flag?
+>
 >- FullTrust_has_n0_Place1nS3cur1ty
 
 > If you enjoyed this room, please check out our SOC Level 1 learning path.
+>
 >- No answer needed

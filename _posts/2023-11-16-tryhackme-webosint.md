@@ -1,5 +1,7 @@
 ---
 layout: post
+toc: true
+comments: true
 title: "TryHackMe: WebOSINT"
 date: 2023-11-16 23:56 +0100
 categories: TryHackMe OSINT
@@ -21,6 +23,7 @@ Note: Sometimes plugging a website into the search bar will send you directly to
 Go ahead and google "RepublicOfKoffee.com" with and without quote marks, just to see what happens.
 
 # Whois Registration
+
 Just because nothing shows up when you visit 'RepublicOfKoffee.com,' doesn't mean that someone doesn't own the domain. In fact, if there is any kind of landing page at all, even a spammy one, then you can be sure that someone does, in fact, own it. But is it currently owned by the same person that used it for the time period we are interested in? We may or may not be able to figure that out, but it's worth a look.
 We can confirm current registration status with a whois lookup.
 A 'whois' lookup is the most basic form of domain recon available. There are multiple websites that will do it for you as well.
@@ -30,13 +33,17 @@ Technically these are required in order to register any domain, but most domain 
 Anyway, let's see what we can find out!
 
 1. What is the name of the company the domain was registered with?
+>
 >- Namecheap Inc
 
-2. What phone number is listed for the registration company? (do not include country code or special characters/spaces)
+1. What phone number is listed for the registration company? (do not include country code or special characters/spaces)
+>
 >- 6613102107
 
-3. What is the first nameserver listed for the site?
+1. What is the first nameserver listed for the site?
+>
 >- redacted for privacy
 
-4. What country is listed for the registrant?
+1. What country is listed for the registrant?
+>
 >- Panama

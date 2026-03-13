@@ -1,5 +1,7 @@
 ---
 layout: post
+toc: true
+comments: true
 title: "TryHackMe: Advent Of Cyber 2023 - Day 11"
 date: 2023-12-11 09:06 +0200
 categories: TryHackMe AdventOfCyber2023
@@ -17,13 +19,17 @@ Throughout the room, you'll see that some users have too many permissions. We ad
 # Questions
 
 > What is the hash of the vulnerable user?
+>
 >- 03E805D8A8C5AA435FB48832DAD620E3
 
 > What is the content of flag.txt on the Administrator Desktop?
+>
 >- THM{XMAS_IS_SAFE}
 
 > If you enjoyed this task, feel free to check out the Compromising Active Directory module!
+>
 >- No answer needed
 
 > Van Sprinkles left some stuff around the DC. It's like a secret message waiting to be unravelled!
+>
 >- No answer needed

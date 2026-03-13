@@ -1,5 +1,7 @@
 ---
 layout: post
+toc: true
+comments: true
 title: "TryHackMe: Advent Of Cyber 2023 - Day 24"
 date: 2023-12-24 11:37 +0200
 categories: TryHackMe AdventOfCyber2023
@@ -17,13 +19,17 @@ Frost-eau suggests that Tracy’s company-owned phone be seized so that Forensic
 # Questions
 
 > One of the photos contains a flag. What is it?
+>
 >- THM{DIGITAL_FORENSICS}
 
 > What name does Tracy use to save Detective Frost-eau’s phone number?
+>
 >- Detective Carrot-Nose
 
 > One SMS exchanged with Van Sprinkles contains a password. What is it?
+>
 >- chee7AQu
 
 > If you have enjoyed this room please check out the Autopsy room.
+>
 >- No answer needed

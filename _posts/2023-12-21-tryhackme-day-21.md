@@ -1,5 +1,7 @@
 ---
 layout: post
+toc: true
+comments: true
 title: "TryHackMe: Advent Of Cyber 2023 - Day 21"
 date: 2023-12-21 20:28 +0200
 categories: TryHackMe AdventOfCyber2023
@@ -13,10 +15,13 @@ One of the main reasons for acquiring AntarctiCrafts was for their crafty automa
 # Questions
 
 > What Linux kernel version is the Jenkins node?
+>
 >- 5.4.0-1029-aws
 
 > What value is found from /var/lib/jenkins/secret.key?
+>
 >- 90e748eafdd2af4746a5ef7941e63272f24f1e33a2882f614ebfa6742e772ba7
 
 > Visit our Discord!
+>
 >- No answer needed

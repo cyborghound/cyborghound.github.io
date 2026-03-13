@@ -1,5 +1,7 @@
 ---
 layout: post
+toc: true
+comments: true
 title: "Tackling the PKCE Puzzle in Robot Framework API Testing"
 date: 2024-09-21 14:25 +0200
 categories: Keycloak Oauth Robot-Framework Test-Automation
@@ -11,15 +13,15 @@ image:
 
 Testing APIs secured with the PKCE flow using Robot Framework and libraries like REST or the RequestsLibrary can be quite challenging. PKCE, designed primarily for browser-based interactions, poses compatibility issues with traditional API testing tools.
 
-##  Stumbling Upon a Solution
+## Stumbling Upon a Solution
 
-After some head-scratching and digging around, a collegue stumbled upon a blog post by Stefaan Lippens ([https://www.stefaanlippens.net/oauth-code-flow-pkce.html](https://www.stefaanlippens.net/oauth-code-flow-pkce.html)) that offered a glimmer of hope. He provided a Python script to handle the PKCE flow with Keycloak 7. With some tweaks to the regex, I was able to adapt the script to work with Keycloak 25, our current version. 
+After some head-scratching and digging around, a collegue stumbled upon a blog post by Stefaan Lippens ([https://www.stefaanlippens.net/oauth-code-flow-pkce.html](https://www.stefaanlippens.net/oauth-code-flow-pkce.html)) that offered a glimmer of hope. He provided a Python script to handle the PKCE flow with Keycloak 7. With some tweaks to the regex, I was able to adapt the script to work with Keycloak 25, our current version.
 
 ## Sharing the Solution
 
 In the following sections, I'll delve into the Python script that helped me successfully implement the PKCE flow within Robot Framework. I'll provide the adapted code and explain its inner workings.
 
-Hopefully, this post saves fellow testers some frustration and empowers them to seamlessly test their secure APIs with Robot Framework. 
+Hopefully, this post saves fellow testers some frustration and empowers them to seamlessly test their secure APIs with Robot Framework.
 
 ## The Python Script
 
@@ -33,6 +35,7 @@ import re
 import urllib.parse
 import requests
 ```
+
 Importing essential libraries for base64 encoding/decoding, hashing, HTML handling, JSON parsing, file operations, regular expressions, URL parsing, and making HTTP requests.
 
 ```python
@@ -42,6 +45,7 @@ username = "<USERNAME>"
 password = "<PASSWORD>"
 redirect_uri = "http://localhost/foobar"
 ```
+
 Defining key variables, including the authorization server URL, client ID, user credentials, and the redirect URI used in the OAuth flow.  Remember to replace the placeholders (YOUR_URL, YOUR_REALM, CLIENT_ID, USERNAME, PASSWORD) with your actual values when implementing this script.
 
 ```python
@@ -193,6 +197,7 @@ print(jwt_payload_decode(result['id_token']))
 Decodes and prints the payload of the obtained ID token using the `jwt_payload_decode` function. This allows you to inspect the claims and user information embedded within the ID token.
 
 ## Wrapping It Up
+
 Hopefully, this Python script and the accompanying breakdown make the process of obtaining an access token for API testing with Robot Framework using PKCE and Keycloak a bit smoother. Remember to replace the placeholders in the code with your actual Keycloak configuration details.
 
 Happy testing!

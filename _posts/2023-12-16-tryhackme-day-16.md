@@ -1,5 +1,7 @@
 ---
 layout: post
+toc: true
+comments: true
 title: "TryHackMe: Advent Of Cyber 2023 - Day 16"
 date: 2023-12-16 15:49 +0200
 categories: TryHackMe AdventOfCyber2023
@@ -15,22 +17,29 @@ After the great success of using machine learning to detect defective toys and p
 # Questions
 
 > What key process of training a neural network is taken care of by using a CNN?
+>
 >- Feature extraction
 
 > What is the name of the process used in the CNN to extract the features?
+>
 >- Convolution
 
 > What is the name of the process used to reduce the features down?
+>
 >- Pooling
 
 > What off-the-shelf CNN did we use to train a CAPTCHA-cracking OCR model?
->-  Attention OCR
+>
+>- Attention OCR
 
 > What is the password that McGreedy set on the HQ Admin portal?
+>
 >- ReallyNotGonnaGuessThis
 
 > What is the value of the flag that you receive when you successfully authenticate to the HQ Admin portal?
+>
 >- THM{Captcha.Can't.Hold.Me.Back}
 
 > If you enjoyed this room, check out our Red Teaming learning path!
+>
 >- No answer needed
