@@ -1,0 +1,31 @@
+{
+  "name": "cyborghound.github.io",
+  "version": "1.0.0",
+  "description": "[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp; [![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyborghound/cyborghound.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/cyborghound/cyborghound.github.io/issues"
+  },
+  "homepage": "https://github.com/cyborghound/cyborghound.github.io#readme",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.3.3",
+    "markdownlint-cli": "^0.48.0"
+  },
+  "lint-staged": {
+    "*.md": "markdownlint"
+  }
+}
