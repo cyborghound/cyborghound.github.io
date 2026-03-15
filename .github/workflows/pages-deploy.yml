@@ -13,9 +13,11 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
+  security-events: write
 
 # Allow one concurrent deployment
 concurrency:
@@ -23,7 +25,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  lint:
+    uses: ./.github/workflows/markdownlint.yml
+  playwright:
+    uses: ./.github/workflows/playwright.yml
+  codeql:
+    uses: ./.github/workflows/codeql.yml
+
   build:
+    needs: [lint, playwright, codeql]
     runs-on: ubuntu-latest
 
     steps:
@@ -68,10 +78,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Wait for CI checks
-        # Small sleep ensures GitHub has time to register the status of parallel workflows triggered by the same SHA
-        run: sleep 30
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
