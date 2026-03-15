@@ -116,6 +116,37 @@ From this point on, any user in `api-readers` who logs in via `my-frontend` will
 Here is the complete sequence from browser login to a protected API call:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "background":           "#0d1117",
+    "mainBkg":              "#161b22",
+    "secondaryColor":       "#161b22",
+    "tertiaryColor":        "#0d1117",
+    "primaryColor":         "#161b22",
+    "primaryBorderColor":   "#00d4ff",
+    "primaryTextColor":     "#e6edf3",
+    "lineColor":            "#00d4ff",
+    "signalColor":          "#00d4ff",
+    "signalTextColor":      "#e6edf3",
+    "actorBkg":             "#161b22",
+    "actorBorder":          "#00d4ff",
+    "actorTextColor":       "#e6edf3",
+    "actorLineColor":       "#4d9fff",
+    "activationBkgColor":   "#0d1117",
+    "activationBorderColor":"#00d4ff",
+    "labelBoxBkgColor":     "#161b22",
+    "labelBoxBorderColor":  "#00d4ff",
+    "labelTextColor":       "#e6edf3",
+    "loopTextColor":        "#e6edf3",
+    "noteBkgColor":         "#0d2233",
+    "noteBorderColor":      "#00d4ff",
+    "noteTextColor":        "#e6edf3",
+    "sequenceNumberColor":  "#0d1117",
+    "edgeLabelBackground":  "#161b22",
+    "fontFamily":           "ui-monospace, monospace"
+  }
+}}%%
 sequenceDiagram
     actor User
     participant SPA as Frontend SPA<br/>(my-frontend)
