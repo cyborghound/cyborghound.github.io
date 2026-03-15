@@ -75,33 +75,37 @@ This forces the authorization code flow to require a `code_verifier` / `code_cha
 
 ---
 
-## Step 3: Wire the Role via a Client Scope
+## Step 3: Add the Resource Role to the Frontend Client's Dedicated Scope
 
-Rather than directly assigning the `my-api:api-reader` role to users, create a **dedicated client scope** so the frontend token carries the role only when it's explicitly requested.
+Instead of building a separate client scope with a mapper, add the `api-reader` role directly to the `my-frontend` client's **assigned roles** (dedicated scope). This tells Keycloak: *only include this role in tokens issued for this client, and only if the authenticated user actually has it*.
 
-### Create the Client Scope
+1. Go to `my-frontend` → **Client Scopes** → select the **Dedicated** tab
+2. Click **Assign role** → switch the filter to **Filter by clients**
+3. Select `my-api` / `api-reader` and confirm
 
-1. Go to **Client Scopes** → **Create client scope**
-2. **Name:** `my-api-access`
-3. **Type:** `Optional` (or `Default` if every user of this frontend should have it)
-4. **Protocol:** `openid-connect`
+The role will now appear in the access token under `resource_access.my-api.roles` whenever a user who holds it logs in through `my-frontend`. No custom scope, no extra mapper needed.
 
-### Add the Role Mapper to the Scope
+---
 
-Inside `my-api-access`, go to **Mappers** → **Configure a new mapper** → **User Client Role**:
+## Step 4: Create a Group and Assign the Role
 
-- **Name:** `my-api-roles`
-- **Client ID:** `my-api`
-- **Token Claim Name:** `resource_access.my-api.roles` *(Keycloak's default structure)*
-- **Add to ID token:** Off
-- **Add to access token:** On
-- **Add to userinfo:** Off
+Assigning roles directly to individual users does not scale. The standard approach is to create a **group**, assign the role to the group, and then manage access purely by group membership.
 
-### Assign the Scope to the Frontend Client
+### Create the Group
 
-Go back to `my-frontend` → **Client Scopes** → **Add client scope** → select `my-api-access`.
+1. Go to **Groups** → **Create group**
+2. **Name:** `api-readers`
 
-Now, when `my-frontend` requests the `my-api-access` scope during the authorization flow, the resulting access token will include the `api-reader` role under `resource_access.my-api.roles`.
+### Assign the Role to the Group
+
+1. Open `api-readers` → **Role mapping** → **Assign role**
+2. Filter by **clients**, select `my-api` / `api-reader`, and confirm
+
+### Add Users to the Group
+
+1. Go to **Users** → open a user → **Groups** → **Join group** → select `api-readers`
+
+From this point on, any user in `api-readers` who logs in via `my-frontend` will receive an access token with the `my-api:api-reader` role included automatically — no per-user role assignment required.
 
 ---
 
@@ -119,12 +123,13 @@ sequenceDiagram
     User->>SPA: Opens application
     SPA->>SPA: Generate code_verifier + code_challenge (PKCE S256)
 
-    SPA->>KC: GET /auth<br/>client_id=my-frontend<br/>scope=openid my-api-access<br/>code_challenge=...
+    SPA->>KC: GET /auth<br/>client_id=my-frontend<br/>scope=openid<br/>code_challenge=...
 
     KC->>User: Redirect to Login Page
     User->>KC: Submit credentials
 
-    KC->>KC: Authenticate user<br/>Check role assignments
+    KC->>KC: Authenticate user<br/>Resolve group membership<br/>User is in api-readers group
+    KC->>KC: Build token claims<br/>api-reader role is in my-frontend dedicated scope
     KC->>SPA: Redirect with authorization code
 
     SPA->>KC: POST /token<br/>grant_type=authorization_code<br/>code + code_verifier
@@ -132,7 +137,7 @@ sequenceDiagram
     KC->>KC: Verify code_verifier matches code_challenge
     KC-->>SPA: Access Token (JWT) + ID Token<br/>resource_access.my-api.roles: [api-reader]
 
-    SPA->>API: GET /api/protected<br/>Authorization: Bearer <access_token>
+    SPA->>API: GET /api/protected<br/>Authorization: Bearer access_token
 
     API->>API: Validate JWT signature<br/>Check issuer + expiry<br/>Verify resource_access.my-api.roles contains api-reader
 
@@ -153,7 +158,7 @@ When the backend receives the access token and decodes the JWT payload, it will 
   "iss": "https://keycloak.example.com/realms/my-realm",
   "aud": "my-api",
   "sub": "a1b2c3d4-...",
-  "scope": "openid my-api-access",
+  "scope": "openid",
   "resource_access": {
     "my-api": {
       "roles": [
@@ -164,7 +169,7 @@ When the backend receives the access token and decodes the JWT payload, it will 
 }
 ```
 
-Your backend framework (Spring Security, Quarkus, FastAPI, etc.) can extract and enforce this role automatically. Most Keycloak adapters and OIDC libraries map `resource_access.<client-id>.roles` to a principal's granted authorities out of the box.
+The role appears automatically because the user is a member of the `api-readers` group, which carries the `my-api:api-reader` role, and that role is part of `my-frontend`'s dedicated scope. Your backend framework (Spring Security, Quarkus, FastAPI, etc.) can map `resource_access.<client-id>.roles` to granted authorities out of the box.
 
 ---
 
@@ -201,9 +206,10 @@ Keeping clients separated gives you clear trust boundaries: the **public PKCE cl
 | Task | Where |
 | ---- | ----- |
 | Define the permission (role) | `my-api` → Roles tab |
-| Bundle the role into a token claim | `my-api-access` scope → User Client Role mapper |
-| Expose the scope to the browser app | `my-frontend` → Client Scopes |
+| Add role to frontend token | `my-frontend` → Client Scopes → Dedicated → Assign role |
+| Group users by access level | Groups → `api-readers` → Role mapping → `my-api/api-reader` |
+| Grant access to a user | Add user to `api-readers` group |
 | Force PKCE for the SPA | `my-frontend` → Advanced → Code Challenge Method: S256 |
 | Validate the token on every request | Backend API — signature, issuer, audience, role |
 
-This two-client pattern scales cleanly. When you add a second frontend (mobile app, another SPA), you create a new public client, add the same `my-api-access` scope, and the role wiring just works — no changes needed to the resource server client or the backend code.
+This pattern scales cleanly: to grant API access to a new user, add them to the group. To add a second frontend, create a new public client and assign the same role to its dedicated scope — no changes to the backend or the resource server client needed.
