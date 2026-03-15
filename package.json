@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:e2e": "playwright test",
+    "test:perf": "k6 run tests/performance/load.js",
     "prepare": "husky",
     "lint-staged": "lint-staged"
   },
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/cyborghound/cyborghound.github.io#readme",
   "devDependencies": {
     "@playwright/test": "^1.58.2",
+    "@types/k6": "^1.6.0",
     "@types/node": "^25.5.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.3.3",

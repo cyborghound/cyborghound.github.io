@@ -96,12 +96,35 @@ jobs:
           retention-days: 30
 
   # ---------------------------------------------------------
+  # STAGE: PERFORMANCE
+  # ---------------------------------------------------------
+  performance:
+    name: k6 Load Testing
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
+      - name: Start Jekyll Server
+        run: bundle exec jekyll serve --port 4000 --detach
+      - name: Wait for server
+        run: sleep 5
+      - name: Run k6 load test
+        uses: grafana/k6-action@v0.3.1
+        with:
+          filename: tests/performance/load.js
+
+  # ---------------------------------------------------------
   # STAGE: BUILD
   # ---------------------------------------------------------
   build:
     name: Build Site
-    # Only run the build if the lint, analyze, and test stages pass
-    needs: [markdownlint, codeql, playwright]
+    # Only run the build if the lint, analyze, test, and performance stages pass
+    needs: [markdownlint, codeql, playwright, performance]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
