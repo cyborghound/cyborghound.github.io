@@ -7,6 +7,8 @@ tags: [mermaid, diagrams, architecture, markdown]
 toc: true
 comments: true
 mermaid: true
+image:
+  path: /assets/img/headers/mermaid_diagrams.png
 ---
 
 They say a picture is worth a thousand words, and nowhere is that more true than in software architecture and documentation. However, maintaining diagram files alongside code can be a hassle, especially when trying to version control them.
