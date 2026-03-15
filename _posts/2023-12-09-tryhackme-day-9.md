@@ -28,7 +28,7 @@ Having retrieved the deleted version of the malware that allows Tracy McGreedy t
 
 > What is the first HTTP URL used by the malware?
 >
->- <http://mcgreedysecretc2.thm>
+>- `http://mcgreedysecretc2.thm`
 
 > How many seconds is the hardcoded value used by the sleep function?
 >
