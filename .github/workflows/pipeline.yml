@@ -117,6 +117,7 @@ jobs:
         uses: grafana/k6-action@v0.3.1
         with:
           filename: tests/performance/load.js
+          flags: --network host
 
   # ---------------------------------------------------------
   # STAGE: BUILD
