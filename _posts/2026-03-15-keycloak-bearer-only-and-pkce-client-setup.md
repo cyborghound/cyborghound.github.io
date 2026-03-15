@@ -7,6 +7,8 @@ tags: [keycloak, oauth2, oidc, pkce, bearer-only, security, iam, authorization]
 toc: true
 comments: true
 mermaid: true
+image:
+  path: /assets/img/headers/keycloak-bearer-pkce.png
 ---
 
 When securing a modern web application that has a **JavaScript frontend** talking to a **protected REST API**, you need two distinct Keycloak client configurations. A common mistake is reusing one client for both roles — this creates security gaps and blurs the trust boundaries in your architecture.
