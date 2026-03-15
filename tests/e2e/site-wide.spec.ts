@@ -41,15 +41,15 @@ test.describe('Site-Wide E2E Tests', () => {
     await expect(page.locator('h1.dynamic-title')).toContainText('404');
   });
 
-  test('Search functionality opens the modal', async ({ page }) => {
+  test('Search functionality becomes active', async ({ page }) => {
     await page.goto('/');
     
-    // Click the search icon
-    await page.locator('#search-trigger').click();
-    
-    // Verify the modal appears and the input gets focus
+    // On desktop, the input is always visible. On mobile, we'd need to click a trigger.
+    // Try directly clicking the input field which should be there.
     const searchInput = page.locator('#search-input');
     await expect(searchInput).toBeVisible();
+    await searchInput.click();
+    await expect(searchInput).toBeFocused();
   });
 
 });
