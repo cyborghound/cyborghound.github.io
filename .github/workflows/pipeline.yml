@@ -90,9 +90,9 @@ jobs:
           ruby-version: 3.3
           bundler-cache: true
       - name: Start Jekyll
-        run: bundle exec jekyll serve --port 4000 --detach --future
+        run: bundle exec jekyll serve --port 4000 --future &
       - name: Wait for Jekyll
-        run: while ! curl -s http://127.0.0.1:4000 > /dev/null; do sleep 1; done
+        run: timeout 60 bash -c 'until curl -s http://127.0.0.1:4000 > /dev/null; do sleep 2; done'
       - name: Start ZAP daemon
         run: |
           docker pull ghcr.io/zaproxy/zaproxy:stable
