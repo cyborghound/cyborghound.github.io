@@ -10,6 +10,8 @@ export default defineConfig({
   use: {
     baseURL: 'http://127.0.0.1:4000',
     trace: 'on-first-retry',
+    ignoreHTTPSErrors: true,
+    proxy: process.env.HTTP_PROXY ? { server: process.env.HTTP_PROXY } : undefined,
   },
   projects: [
     {
@@ -23,7 +25,7 @@ export default defineConfig({
   webServer: {
     command: 'bundle exec jekyll serve --port 4000',
     url: 'http://127.0.0.1:4000',
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: true,
     timeout: 120 * 1000,
   },
 });
