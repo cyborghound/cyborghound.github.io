@@ -89,10 +89,14 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
+      - name: Start Jekyll
+        run: bundle exec jekyll serve --port 4000 --detach --future
+      - name: Wait for Jekyll
+        run: while ! curl -s http://127.0.0.1:4000 > /dev/null; do sleep 1; done
       - name: Start ZAP daemon
         run: |
           docker pull ghcr.io/zaproxy/zaproxy:stable
-          docker run -d --network host --name zap ghcr.io/zaproxy/zaproxy:stable zap.sh -daemon -host 0.0.0.0 -port 8080 -config api.disablekey=true -config api.addrs.any=true
+          docker run -d --network host --name zap ghcr.io/zaproxy/zaproxy:stable zap.sh -daemon -host 0.0.0.0 -port 8080 -config api.disablekey=true -config api.addrs.any.enable=true
           while ! curl -s http://127.0.0.1:8080 > /dev/null; do sleep 1; done
       - name: Run Playwright tests
         run: npx playwright test
