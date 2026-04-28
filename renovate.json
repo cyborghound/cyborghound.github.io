@@ -4,6 +4,12 @@
   "commitMessagePrefix": "chore(deps):",
   "packageRules": [
     {
+      "matchCategories": [
+        "docker"
+      ],
+      "enabled": true
+    },
+    {
       "matchUpdateTypes": ["patch", "minor"],
       "automerge": true
     }
@@ -12,9 +18,6 @@
     "pinDigests": true
   },
   "dockerfile": {
-    "enabled": true
-  },
-  "docker": {
     "enabled": true
   }
 }
