@@ -24,7 +24,7 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 concurrency:
-  group: "pages"
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -186,7 +186,8 @@ jobs:
   # ---------------------------------------------------------
   deploy:
     name: Deploy to GitHub Pages
-    # Only deploy if the build stage succeeds
+    # Only deploy if the build stage succeeds, and only on pushes to main (not PRs)
+    if: github.event_name == 'push'
     needs: build
     environment:
       name: github-pages
