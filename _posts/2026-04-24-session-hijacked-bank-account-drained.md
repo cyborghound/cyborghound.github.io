@@ -177,7 +177,9 @@ As of publishing: I'm still waiting on both. Eleven days into the Anthropic case
 
 **Anthropic:** The original case has been open since April 24 — now over six weeks — with no resolution and no money back. I've opened a second case because the first has gone silent. No human response yet on either.
 
-> **€341.12 still outstanding.** If you're in the same position — Anthropic case open, no response — consider escalating via your bank's chargeback process in parallel. Don't wait on Anthropic's support queue.
+My bank contacted Anthropic's bank directly to attempt a recovery. That route also came up empty — the funds could not be retrieved through the interbank process.
+
+> **€341.12 still outstanding.** Anthropic support unresponsive after 6+ weeks. Interbank recovery attempted and failed. If you're in the same position, document everything and keep escalating — both through Anthropic's support and your bank's dispute process.
 {: .prompt-warning }
 
 ---
