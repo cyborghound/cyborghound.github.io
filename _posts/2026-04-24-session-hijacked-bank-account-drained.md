@@ -179,7 +179,9 @@ As of publishing: I'm still waiting on both. Eleven days into the Anthropic case
 
 My bank contacted Anthropic's bank directly to attempt a recovery. That route also came up empty — the funds could not be retrieved through the interbank process.
 
-> **€341.12 still outstanding.** Anthropic support unresponsive after 6+ weeks. Interbank recovery attempted and failed. If you're in the same position, document everything and keep escalating — both through Anthropic's support and your bank's dispute process.
+A complaint has also been filed with the **Autoriteit Persoonsgegevens (AP)** regarding the handling of personal data and the security failures that enabled this incident.
+
+> **€341.12 still outstanding.** Anthropic support unresponsive after 6+ weeks. Interbank recovery attempted and failed. AP complaint filed. If you're in the same position, document everything and escalate on all fronts — Anthropic support, your bank's dispute process, and the AP.
 {: .prompt-warning }
 
 ---
