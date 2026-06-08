@@ -72,7 +72,18 @@ Klarna can bypass SCA using a [**Transaction Risk Analysis (TRA)** exemption](ht
 
 ---
 
-*This incident and the [April 17 Claude session hijack](/posts/session-hijacked-bank-account-drained) are covered under a single police report filed with a cybercrime specialist. Whether both incidents share a common origin is unknown. Updates will follow as the Klarna dispute progresses.*
+*This incident and the [April 17 Claude session hijack](/posts/session-hijacked-bank-account-drained) are covered under a single police report filed with a cybercrime specialist. Whether both incidents share a common origin is unknown.*
+
+---
+
+## Update — June 2026
+
+After multiple rounds of correspondence and formal disputes, **Klarna closed the case in my favour**. They were unable to provide any evidence linking the transactions to me — no matching device fingerprint, no IP address, nothing that held up under scrutiny. Both charges of €77.75 were written off.
+
+The outcome is consistent with what the activity log already showed: no authentication event before the purchases, no login, no device recognition that could plausibly be mine. When pushed to actually produce the evidence behind their initial rejection, they couldn't.
+
+> If Klarna rejects your fraud report citing "recognized device" — push back. Request the technical evidence in writing. IP address, device fingerprint, timestamp. If they can't produce it, or if the data doesn't match your devices or network, you have grounds for a successful appeal.
+{: .prompt-tip }
 
 ---
 

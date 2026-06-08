@@ -171,6 +171,17 @@ As of publishing: I'm still waiting on both. Eleven days into the Anthropic case
 
 ---
 
+## Update — June 2026
+
+**Klarna (separate incident, April 28):** Resolved. After multiple rounds of formal disputes, Klarna closed the case in my favour — they were unable to produce any evidence that the transactions were mine. Both charges written off. Full account in [Klarna Identity Theft: How the 'Klarna Method' Exploits Stolen Data](/posts/klarna-psn-gift-card-fraud).
+
+**Anthropic:** The original case has been open since April 24 — now over six weeks — with no resolution and no money back. I've opened a second case because the first has gone silent. No human response yet on either.
+
+> **€341.12 still outstanding.** If you're in the same position — Anthropic case open, no response — consider escalating via your bank's chargeback process in parallel. Don't wait on Anthropic's support queue.
+{: .prompt-warning }
+
+---
+
 ## What You Should Do Right Now
 
 ### If you use Claude Code on a VPS or remote server
