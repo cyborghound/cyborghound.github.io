@@ -87,7 +87,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@e8944e80fb94b20106697132f8c20c665fab29e9 # v1.325.0
         with:
-          ruby-version: 3.4.10
+          ruby-version: 3.4.11
           bundler-cache: true
       - name: Start Jekyll
         run: bundle exec jekyll serve --port 4000 --future &
@@ -132,7 +132,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@e8944e80fb94b20106697132f8c20c665fab29e9 # v1.325.0
         with:
-          ruby-version: 3.4.10
+          ruby-version: 3.4.11
           bundler-cache: true
       - name: Start Jekyll Server
         run: bundle exec jekyll serve --port 4000 --detach
@@ -162,7 +162,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@e8944e80fb94b20106697132f8c20c665fab29e9 # v1.325.0
         with:
-          ruby-version: 3.4.10
+          ruby-version: 3.4.11
           bundler-cache: true
 
       - name: Build site
